@@ -1,3 +1,4 @@
+
 // Функция для создания игрового поля
 function createGameBoard() {
     const gameBoard = document.createElement('div');
@@ -13,7 +14,7 @@ function createGameBoard() {
   // Функция для создания персонажа
   function createCharacter() {
     const character = document.createElement('img');
-    character.src = 'path/to/your/image.png';
+    character.src = require('./assets/goblin.png'); // Используем require для загрузки изображения
     character.classList.add('character');
     return character;
   }

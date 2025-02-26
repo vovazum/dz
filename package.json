@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "eslint src/**/*.js", 
+    "dev": "webpack serve --mode development" 
   },
   "keywords": [],
   "author": "",
