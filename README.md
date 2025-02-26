@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/your-appveyor-project-id?svg=true)](https://ci.appveyor.com/project/vovazum/dz)
