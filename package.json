@@ -6,7 +6,8 @@
     "test": "jest",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src/**/*.js",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
