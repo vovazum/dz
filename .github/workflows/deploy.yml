@@ -19,7 +19,9 @@ jobs:
         node-version: 18
     
     - name: Install dependencies
-      run: npm install
+      run: |
+        npm install
+        npm install path-browserify url util stream-http https-browserify os-browserify --save-dev
     
     - name: Build project
       run: npm run build

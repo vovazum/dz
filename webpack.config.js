@@ -16,9 +16,6 @@ module.exports = {
       "stream": require.resolve("stream-browserify"),
       "https": require.resolve("https-browserify"),
       "http": require.resolve("stream-http"),
-      "zlib": require.resolve("browserify-zlib"),
-      "assert": require.resolve("assert/"),
-      "crypto": require.resolve("crypto-browserify"),
       "os": require.resolve("os-browserify/browser"),
       "fs": false
     }
@@ -47,4 +44,7 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
+  devServer: {
+    static: './dist',
+  },
 };
