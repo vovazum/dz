@@ -8,18 +8,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
-  resolve: {
-    fallback: {
-      "path": require.resolve("path-browserify"),
-      "url": require.resolve("url/"),
-      "util": require.resolve("util/"),
-      "stream": require.resolve("stream-browserify"),
-      "https": require.resolve("https-browserify"),
-      "http": require.resolve("stream-http"),
-      "os": require.resolve("os-browserify/browser"),
-      "fs": false
-    }
-  },
   module: {
     rules: [
       {
@@ -35,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        type: 'asset/resource',
+        use: ['file-loader'],
       },
     ],
   },

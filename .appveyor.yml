@@ -1,10 +1,7 @@
-version: 1.0.{build}
 image: Visual Studio 2019
 
 environment:
   nodejs_version: "18"
-  GITHUB_TOKEN:
-    secure: YOUR_ENCRYPTED_TOKEN_HERE  # Замените на зашифрованный токен
 
 install:
   - ps: Install-Product node $env:nodejs_version
@@ -16,7 +13,12 @@ build_script:
 test_script:
   - npm test
 
-on_success:
-  - git config --global user.name "GitHub Actions"
-  - git config --global user.email "actions@github.com"
-  - npm run deploy
+artifacts:
+  - path: dist
+    name: dist
+
+deploy:
+  provider: GitHub
+  artifact: dist
+  on:
+    branch: main
