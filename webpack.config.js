@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin'); // Добавляем плагин
 
 module.exports = {
   entry: './src/index.js',
@@ -9,18 +8,19 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
-  // Добавляем секцию resolve.fallback
   resolve: {
     fallback: {
       "path": require.resolve("path-browserify"),
       "url": require.resolve("url/"),
       "util": require.resolve("util/"),
-      "http": require.resolve("stream-http"),
+      "stream": require.resolve("stream-browserify"),
       "https": require.resolve("https-browserify"),
+      "http": require.resolve("stream-http"),
+      "zlib": require.resolve("browserify-zlib"),
+      "assert": require.resolve("assert/"),
+      "crypto": require.resolve("crypto-browserify"),
       "os": require.resolve("os-browserify/browser"),
-      "vm": require.resolve("vm-browserify"),
-      "fs": false, // отключаем fs, так как он не нужен в браузере
-      "tty": require.resolve("tty-browserify")
+      "fs": false
     }
   },
   module: {
@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
     ],
   },
@@ -46,9 +46,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new NodePolyfillPlugin() // Добавляем плагин в секцию plugins
   ],
-  devServer: {
-    static: './dist',
-  },
 };

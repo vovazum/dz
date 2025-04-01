@@ -8,23 +8,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Даём права на запись
+      contents: write
     
     steps:
     - uses: actions/checkout@v3
     
-    - name: Set up Node.js
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: 18
     
     - name: Install dependencies
-      run: npm install
+      run: |
+        npm install
+        npm install path-browserify url util stream-http https-browserify os-browserify --save-dev
     
     - name: Build project
       run: npm run build
     
-    - name: Deploy to GH Pages
+    - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
